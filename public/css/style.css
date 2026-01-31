@@ -1,0 +1,48 @@
+body{
+    background-color: #2779a7;
+}
+
+header{
+    text-align: center;
+    color: white;
+}
+
+.title{
+    font-size: 5rem;
+    margin-bottom: 5px;
+   
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card{
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card h3{
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+.card p{
+    margin-left: 10px;
+}
+
+.card img{
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0px;
+}
