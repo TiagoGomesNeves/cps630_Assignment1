@@ -8,18 +8,41 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js"></script>
 </head>
-<body>
-    <header>
-        <h1 class="title">City Information Application</h1>
-        <p>Contains info about cities</p>
-    </header>
-    <button>Add A City</button>
-    <button>Modify a City</button>
-    
-    <div class="card-container"></div>
 
-    <button>Check the weather</button>
-    <button>Compare The Cities</button>
+<body>
+    <header class="topbar">
+        <nav class="tabs">
+            <a class="tab" href="/">
+                <img class="tab-icon" src="/images/home.png" alt="" aria-hidden="true">
+                Home
+            </a>
+
+            <a class="tab" href="/weather">
+                <img class="tab-icon" src="/images/weather.png" alt="" aria-hidden="true">
+                Weather
+            </a>
+
+            <a class="tab" href="/charts">
+                <img class="tab-icon" src="/images/graph.png" alt="" aria-hidden="true">
+                Compare
+            </a>
+        </nav>
+    </header>
+    
+    <main>
+        <header>
+            <h1 class="title">City Information Application</h1>
+            <p>Contains info about cities</p>
+        </header>
+        
+        <button>Add A City</button>
+        <button>Modify a City</button>
+        
+        <div class="card-container"></div>
+
+        <button>Check the weather</button>
+        <button>Compare The Cities</button>
+    </main>
 
 
 </body>

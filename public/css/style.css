@@ -1,10 +1,12 @@
 body{
-    background-color: #2779a7;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
 }
 
 header{
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .title{
@@ -46,3 +48,38 @@ header{
     border-radius: 5px 5px 0 0;
     margin-bottom: 0px;
 }
+
+.topbar {
+    width: 100%;
+    background: #ffffff;
+    box-sizing: border-box;
+    padding: 14px 24px;
+    box-shadow: 0 0 7px rgb(130, 130, 130);
+}
+
+.tabs {
+    display: flex;
+    gap: 45px;
+    align-items: center;
+}
+
+.tab-icon {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 12px;
+    vertical-align: middle;
+}
+
+.tab {
+    color: #282828;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+    font-size: 25px;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.tab:hover {
+    background: #e0e0e0;
+}
+
