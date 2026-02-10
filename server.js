@@ -1,7 +1,9 @@
 const express = require('express');
-const app = express();
 const path = require('path');
+const multer = require('multer');
 
+const upload = multer({dest: './public/images'});
+const app = express();
 const PORT = 8080;
 
 let weather_library =[
@@ -40,7 +42,6 @@ app.get('/api/cities',  (req, res) => {
 app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
     const cityTitle = req.params.title;
     const updatedData = req.body;
-    console.log(updatedData);
     let index = -1;
 
     for (let i =0; i < weather_library.length; i++){
@@ -49,8 +50,6 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
             break;
         }
     }
-    console.log("Before");
-    console.log(weather_library);
 
     //Although user does not update title, this prevents wierd bugs where city is deleted before updated
     if ( index == -1){
@@ -61,18 +60,31 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
         weather_library[index].temperature = updatedData.temperature;
         weather_library[index].gdp = updatedData.gdp;
         weather_library[index].description = updatedData.description;
-        console.log("After");
-        console.log(weather_library);
         res.status(204).json(weather_library);
-        console.log("done");
     }
 
 
 }); 
 
 //Used to add new city data to our city json storage
-app.post('/api/cities', express.json(), (req,res) => {
-    
+app.post('/api/cities', upload.single('img'), (req,res) => {
+    const newData = req.body;
+    const img = req.file
+    if (!newData.title || !newData.weather || !newData.temperature || !newData.population || !newData.gdp || !newData.description || !img.filename){
+        res.status(400).json({error: "Bad Request Not all fields filled"});
+    }
+    const newCity = {
+        title: newData.title,
+        weather: newData.weather,
+        temperature: newData.temperature,
+        population: newData.population,
+        gdp: newData.gdp,
+        img: img ? img.filename : 'default.jpg',
+        description: newData.description
+    };
+
+    weather_library.push(newCity);
+    res.status(201).json(newCity);
 });
 
 // Use to delete record from "Database"
@@ -98,6 +110,7 @@ app.delete('/api/cities/title/:title', (req,res) =>{
     }
 
 });
+
 
 
 // Starts the server, listens on port 8080

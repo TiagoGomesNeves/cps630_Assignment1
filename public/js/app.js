@@ -129,11 +129,47 @@ document.getElementById('add-form-cancel').addEventListener('click', () =>{
     document.getElementById('add-form-container').classList.add('hidden');
 });
 
-document.getElementById('add-form').addEventListener('submit', (e) =>{
+document.getElementById('add-form').addEventListener('submit', async (e) =>{
     e.preventDefault();
-    let newData = {};
+    let newData = new FormData();
+    const title = document.getElementById('add-title').value;
+    const weather = document.getElementById('add-weather').value;
+    const population = document.getElementById('add-pop').value;
+    const temperature = document.getElementById('add-temp').value;
+    const gdp = document.getElementById('add-gdp').value;
+    const description = document.getElementById('add-desc').value;
+    const img = document.getElementById('add-img').files[0];
 
-    
+    if (title) newData.append('title', title);
+    if (weather) newData.append('weather', weather);
+    if (temperature) newData.append('temperature', temperature);
+    if (population) newData.append('population', population);
+    if (gdp) newData.append('gdp', gdp);
+    if (img) newData.append('img', img);
+    if (description) newData.append('description', description);
+
+    console.log(newData);
+    try{
+        const response = await fetch('/api/cities', {
+            method: 'POST',
+            body: newData
+        })
+        const result = await response.json();
+        if (response.status == 201){
+            alert("New City Added");
+            document.getElementById('add-form-container').classList.add('hidden');
+            resetHome();
+            loadContent();
+        }else{
+            alert("Error: ", result.json);
+        }
+    }catch(error){
+        console.error("Error: ", error);
+    }
+
+
+
+
 
 });
 

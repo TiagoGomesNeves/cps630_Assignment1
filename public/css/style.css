@@ -129,13 +129,10 @@ header{
     display: none;
 }
 
-
 .update-form-content input {
   width: 100%;
   margin-bottom: 10px;
 }
-
-
 
 .update-form-content {
   background: white;
@@ -152,6 +149,41 @@ header{
   width: 25%;
 }
 
-.test{
-    background-color: red;
+.add-form-content input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.add-form-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+.add-form-buttons{
+  display: flex;
+  justify-content:center;
+}
+
+.add-form-buttons button{
+  width: 25%;
+}
+
+.button-add{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    background-color: lightblue;
+    
+}
+
+.button-add:hover{
+    cursor: pointer;
+    background-color: white;
 }
