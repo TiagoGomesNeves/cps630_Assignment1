@@ -38,11 +38,38 @@ function display(cities){
             <p>${city.description}</p>
             <div class="buttons">
                 <button class="button-update">Update</button>
-                <button class="button-delete">Delete</button>
+                <button class="button-delete" value="${city.title}">Delete</button>
             </div>
         `;
+
+        elem.querySelector('.button-delete').addEventListener('click', () => {
+            deleteCity(city.title); 
+        });
 
         container.appendChild(elem);
     });
 
 }
+
+
+function resetHome(){
+    const container = document.querySelector('.card-container');
+    container.innerHTML = '';
+}
+
+async function deleteCity(title){
+    
+    try{
+        const response = await fetch(`/api/cities/title/${title}`, {method: 'DELETE'});
+        if (response.status === 204){
+            alert("Succesfully Deleted Book");
+            resetHome();
+            loadContent();
+        }else{
+            const result = await response.json();
+            alert("Error: ", result.json);
+        }
+    }catch (error){
+        console.error("Book could not be deleted: ", error);
+    }
+};
