@@ -7,7 +7,6 @@
     <meta name="description" content="A website about the mangement of information about cities. Compare, add, remove, update and check the weather for multiple cities">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/app.js"></script>
 </head>
 
 <body>
@@ -36,8 +35,24 @@
             <p>Contains info about cities</p>
         </header>
         <div class="card-container"></div>
+        <div id="update-form-container" class="form hidden">
+            <div class="update-form-content">
+                <form id="update-form">
+                    <h2>Update City</h2>
+                    <input type="text" id="weather" placeholder="Weather">
+                    <input type="text" id="temp" placeholder="Temperature">
+                    <input type="text" id="pop" placeholder="Population">
+                    <input type="text" id="gdp" placeholder="GDP">
+                    <input type="text" id="desc" placeholder="Description">
+                    <div class="update-form-buttons">
+                        <button type="submit">Save</button>
+                        <button type="button" id="update-form-cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
-
+    <script src="js/app.js"></script>
 </body>
 </html>

@@ -97,12 +97,61 @@ header{
 
 }
 
-.button-update{
+.button-update, .button-delete{
+    background-color: white(155, 155, 242);
+    border: black 1px solid;
+    border-radius: 5px;
+    margin:5px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
-
+.button-delete:hover,.button-update:hover{
+    background-color: grey;
+    cursor: pointer;
 }
 
 
-.button-delete{
+.form{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.form.hidden{
+    display: none;
+}
+
+
+.update-form-content input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+
+
+.update-form-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+.update-form-buttons {
+  display: flex;
+  justify-content:center;
+}
+
+.update-form-buttons button{
+  width: 25%;
+}
+
+.test{
+    background-color: red;
 }

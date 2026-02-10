@@ -33,12 +33,42 @@ app.get('/charts', (req, res) => {
 
 // Sends our city json list to frontend
 app.get('/api/cities',  (req, res) => {
-    res.status(200).json(weather_library);
-    console.log(weather_library);
+    res.status(200).json(weather_library); 
 });
 
 // Used to update information in the city
-// app.patch('/api/cities/:')
+app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
+    const cityTitle = req.params.title;
+    const updatedData = req.body;
+    console.log(updatedData);
+    let index = -1;
+
+    for (let i =0; i < weather_library.length; i++){
+        if (weather_library[i].title.toLowerCase() == cityTitle.toLowerCase()){
+            index = i;
+            break;
+        }
+    }
+    console.log("Before");
+    console.log(weather_library);
+
+    //Although user does not update title, this prevents wierd bugs where city is deleted before updated
+    if ( index == -1){
+        res.status(404).json({error: "City " + cityTitle  + " was not Found"});
+    }else{
+        weather_library[index].weather = updatedData.weather;
+        weather_library[index].population = updatedData.population;
+        weather_library[index].temperature = updatedData.temperature;
+        weather_library[index].gdp = updatedData.gdp;
+        weather_library[index].description = updatedData.description;
+        console.log("After");
+        console.log(weather_library);
+        res.status(204).json(weather_library);
+        console.log("done");
+    }
+
+
+}); 
 
 //Used to add new city data to our city json storage
 app.post('/api/cities', express.json(), (req,res) => {
@@ -58,13 +88,13 @@ app.delete('/api/cities/title/:title', (req,res) =>{
     }
 
     if (index === -1){
-        res.status(404).json({error: "Book " + reqTitle  + " was not Found"});
+        res.status(404).json({error: "City " + reqTitle  + " was not Found"});
     }else{
-        book = weather_library[index];
+        city = weather_library[index];
         weather_library.splice(index, 1);
         console.log("index: ", index);
         console.log(weather_library);
-        res.status(204).json(book);
+        res.status(204).json(city);
     }
 
 });
