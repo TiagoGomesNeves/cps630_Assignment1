@@ -62,6 +62,8 @@ function resetHome(){
 
 // This is used in our update form and patch request so we know which instance to update
 let selectedCityTitle = "";
+
+
 function updateCity(city){
     const container = document.getElementById('update-form-container');
     selectedCityTitle = city.title;
@@ -119,7 +121,26 @@ document.querySelector('#update-form').addEventListener('submit', async (e) => {
     }
 });
 
+document.querySelector('.button-add').addEventListener('click', ()=> {
+    addCityForm();
+});
 
+document.getElementById('add-form-cancel').addEventListener('click', () =>{
+    document.getElementById('add-form-container').classList.add('hidden');
+});
+
+document.getElementById('add-form').addEventListener('submit', (e) =>{
+    e.preventDefault();
+    let newData = {};
+
+    
+
+});
+
+function addCityForm(){
+    const container = document.getElementById('add-form-container');
+    container.classList.remove('hidden');
+}
 
 
     
