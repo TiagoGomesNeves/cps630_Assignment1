@@ -5,12 +5,13 @@ const path = require('path');
 const PORT = 8080;
 
 let weather_library =[
-    {title: 'Toronto', weather: 'snowy', population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Toronto', weather: 'snowy', population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Toronto', weather: 'snowy', population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Toronto', weather: 'snowy', population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
-    
+    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
+        
 ];
+
 
 app.use('/', express.static(path.join(__dirname, '/public')));
 
@@ -29,10 +30,11 @@ app.get('/charts', (req, res) => {
 
 
 // API 
-app.get('/api/cities', (req, res) => {
+app.get('/api/cities',  (req, res) => {
     res.status(200).json(weather_library);
     console.log(weather_library);
 });
+
 
 // Starts the server, listens on port 8080
 app.listen(PORT, () => {console.log("listening")});

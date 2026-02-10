@@ -19,7 +19,15 @@ async function loadContent(){
 
 // Goes through the list of cities and uses that information to build them a card
 function display(cities){
+
     const container = document.querySelector('.card-container');
+    if (cities.length == 0){
+         const elem = document.createElement('div');
+         elem.innerHTML = ` 
+            <div class="no-cities">No City Data Available</div>
+         `;
+         container.append(elem);
+    }
     cities.forEach(city => {
         const elem = document.createElement('div');
         elem.classList.add('card');
@@ -28,6 +36,10 @@ function display(cities){
             <img src="/images/${city.img}" alt="${city.title}">
             <h3> ${city.title} </h3>
             <p>${city.description}</p>
+            <div class="buttons">
+                <button class="button-update">Update</button>
+                <button class="button-delete">Delete</button>
+            </div>
         `;
 
         container.appendChild(elem);

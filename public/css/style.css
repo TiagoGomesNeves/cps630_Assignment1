@@ -83,3 +83,26 @@ header{
     background: #e0e0e0;
 }
 
+
+.buttons{
+    display: flex;
+    justify-content: right;
+}
+
+.no-cities{
+    width: 100vh;
+    font-size: 5rem;
+    text-align: center;
+    border: rgb(186, 68, 68) solid 5px;
+
+}
+
+.button-update{
+
+
+}
+
+
+.button-delete{
+
+}
