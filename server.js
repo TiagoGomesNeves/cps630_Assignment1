@@ -8,9 +8,9 @@ const PORT = 8080;
 
 let weather_library =[
     {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
+    {title: 'Chicago', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Atlanta', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Brampton', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
         
 ];
 
@@ -109,6 +109,18 @@ app.delete('/api/cities/title/:title', (req,res) =>{
         res.status(204).json(city);
     }
 
+});
+
+app.get('/api/cities/weather', (req,res) =>{
+    let weathers = [];
+
+    weather_library.forEach(e => {
+        if (!weathers.includes(e.weather)){
+            weathers.push(e.weather);
+        }
+    });
+    console.log(weathers);
+    res.status(200).json(weathers);
 });
 
 
