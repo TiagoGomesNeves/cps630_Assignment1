@@ -58,9 +58,50 @@ document.getElementById('selector').addEventListener('change', async (e) =>{
 function snowyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
-        <h2>Current Weather in ${city.title} is ${city.weather}</h2>
+        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
         <div>
-        <img src="images/${city.img}" height="200px">
+        <img src="images/${city.img}" height="500px">
         </div>
     `;
 }
+
+function sunnyCard(city){
+    const container = document.querySelector(".weather-card-container");
+    container.innerHTML = `
+        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <div>
+        <img src="images/${city.img}" height="500px">
+        </div>
+    `;
+}
+
+function rainyCard(city){
+    const container = document.querySelector(".weather-card-container");
+    container.innerHTML = `
+        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <div>
+        <img src="images/${city.img}" height="500px">
+        </div>
+    `;
+}
+
+function windyCard(city){
+    const container = document.querySelector(".weather-card-container");
+    container.innerHTML = `
+        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <div>
+        <img src="images/${city.img}" height="500px">
+        </div>
+    `;
+}
+
+function cloudyCard(city){
+    const container = document.querySelector(".weather-card-container");
+    container.innerHTML = `
+        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <div>
+        <img src="images/${city.img}" height="500px">
+        </div>
+    `;
+}
+
