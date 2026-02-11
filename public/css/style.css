@@ -1,5 +1,5 @@
 body{
-    background-color: #f6f6f6;
+    background-color: #F4F1E9;
     margin: 0;
     padding: 0;
 }
@@ -53,7 +53,7 @@ header{
 
 .topbar {
     width: 100%;
-    background: #ffffff;
+    background: #154734;
     box-sizing: border-box;
     padding: 14px 24px;
     box-shadow: 0 0 7px rgb(130, 130, 130);
@@ -73,7 +73,7 @@ header{
 }
 
 .tab {
-    color: #282828;
+    color: #DDCBA4;
     text-decoration: none;
     font-family: Verdana, sans-serif;
     font-size: 25px;
