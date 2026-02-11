@@ -8,9 +8,10 @@ const PORT = 8080;
 
 let weather_library =[
     {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Chicago', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Atlanta', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Brampton', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
+    {title: 'Chicago', weather: 'rainy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Atlanta', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Brampton', weather: 'cloudy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Kingston', weather: 'sunny', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
         
 ];
 
