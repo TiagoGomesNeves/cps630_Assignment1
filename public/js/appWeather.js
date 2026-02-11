@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () =>{
 async function loadContent(){
     try{
         const response = await fetch('/api/cities/weather');
-        const weather = await response.json();
+        const cities = await response.json();
 
         const container = document.getElementById('selector');
-        weather.forEach(element => {
+        cities.forEach(element => {
             let option = document.createElement('option');
             option.value = element;
             option.textContent = element;
