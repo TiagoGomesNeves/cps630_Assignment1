@@ -124,6 +124,25 @@ app.get('/api/cities/title', (req,res) =>{
 });
 
 
+app.get('/api/cities/title/:title', (req,res)=>{
+    const reqTitle = req.params.title;
+    let index = -1;
+
+    for (let i =0; i < weather_library.length; i++){
+        if (weather_library[i].title.toLowerCase() == reqTitle.toLowerCase()){
+            index = i;
+            break;
+        }
+    }
+    if (index === -1){
+        res.status(404).json({error: "City " + reqTitle  + " was not Found"});
+    }else{
+        city = weather_library[index];
+        res.status(200).json(city);
+    }
+});
+
+
 
 // Starts the server, listens on port 8080
 app.listen(PORT, () => {console.log("listening")});

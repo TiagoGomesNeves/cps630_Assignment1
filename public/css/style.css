@@ -192,3 +192,11 @@ header{
 .selector{
     margin-bottom: 10px;
 }
+
+
+.weather-card-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: red solid 5px;
+}

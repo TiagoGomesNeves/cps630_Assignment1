@@ -69,7 +69,7 @@ function updateCity(city){
     const container = document.getElementById('update-form-container');
     selectedCityTitle = city.title;
 
-    document.getElementById('weather').value=city.weather;
+   
     document.getElementById('temp').value=city.temperature;
     document.getElementById('pop').value=city.population;
     document.getElementById('gdp').value=city.gdp;

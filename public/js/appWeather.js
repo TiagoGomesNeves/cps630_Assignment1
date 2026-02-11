@@ -2,9 +2,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     loadContent();
 });
 
-
-
-
 async function loadContent(){
     try{
         const response = await fetch('/api/cities/title');
@@ -27,24 +24,29 @@ document.getElementById('selector').addEventListener('change', async (e) =>{
     const title = e.target.value;
     
     try{
-        const response = await fetch(`api/cities/weather/${title}`);
-        const weather = await response.json();
+        const response = await fetch(`api/cities/title/${title}`);
+        const city = await response.json();
 
-        switch(weather[0].toLowerCase()){
-            case "sunny":
-                sunnyCard(weather);
-                break;
-            case "snowy":
-                snowyCard(weather);
-                break;
-            case "cloudy":
-                cloudyCard(weather);
-                break;
-            case "rainy":
-                rainyCard(weather);
-                break;
-            default:
-                windyCard(weather);
+        if (response.status == 200){
+            switch(city.weather.toLowerCase()){
+                case "sunny":
+                    sunnyCard(city);
+                    break;
+                case "snowy":
+                    snowyCard(city);
+                    break;
+                case "cloudy":
+                    cloudyCard(city);
+                    break;
+                case "rainy":
+                    rainyCard(city);
+                    break;
+                default:
+                    windyCard(city);
+            }
+        }
+        else{
+            console.log("Error: ", response.error);
         }
 
     }catch(error){
@@ -53,6 +55,12 @@ document.getElementById('selector').addEventListener('change', async (e) =>{
 });
 
 
-function snowyCard(){
-    const container = document.getElementById
+function snowyCard(city){
+    const container = document.querySelector(".weather-card-container");
+    container.innerHTML = `
+        <h2>Current Weather in ${city.title} is ${city.weather}</h2>
+        <div>
+        <img src="images/${city.img}" height="200px">
+        </div>
+    `;
 }
