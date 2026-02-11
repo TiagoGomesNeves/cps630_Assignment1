@@ -28,7 +28,7 @@ function display(cities){
          `;
          container.append(elem);
     }
-    
+
     cities.forEach(city => {
         const elem = document.createElement('div');
         elem.classList.add('card');
@@ -159,6 +159,7 @@ document.getElementById('add-form').addEventListener('submit', async (e) =>{
         if (response.status == 201){
             alert("New City Added");
             document.getElementById('add-form-container').classList.add('hidden');
+            document.getElementById('add-form').reset();
             resetHome();
             loadContent();
         }else{
