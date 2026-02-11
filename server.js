@@ -112,15 +112,15 @@ app.delete('/api/cities/title/:title', (req,res) =>{
 });
 
 app.get('/api/cities/weather', (req,res) =>{
-    let weathers = [];
+    let cities = [];
 
     weather_library.forEach(e => {
-        if (!weathers.includes(e.weather)){
-            weathers.push(e.weather);
+        if (!cities.includes(e.title)){
+            cities.push(e.title);
         }
     });
-    console.log(weathers);
-    res.status(200).json(weathers);
+    console.log(cities);
+    res.status(200).json(cities);
 });
 
 

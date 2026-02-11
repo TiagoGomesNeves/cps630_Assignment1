@@ -187,3 +187,8 @@ header{
     cursor: pointer;
     background-color: white;
 }
+
+
+.selector{
+    margin-bottom: 10px;
+}
