@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 async function loadContent(){
     try{
-        const response = await fetch('/api/cities/weather');
+        const response = await fetch('/api/cities/title');
         const cities = await response.json();
 
         const container = document.getElementById('selector');
@@ -24,6 +24,12 @@ async function loadContent(){
 
 
 document.getElementById('selector').addEventListener('change', async (e) =>{
-    const title = e.value;
-    console.log(e.target.value);
+    const title = e.target.value;
+    
+    try{
+        const response = await fetch(`api/cities/weather/${title}`);
+
+    }catch(error){
+        console.error("Error: ", error);
+    }
 });

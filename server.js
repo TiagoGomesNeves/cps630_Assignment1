@@ -111,7 +111,7 @@ app.delete('/api/cities/title/:title', (req,res) =>{
 
 });
 
-app.get('/api/cities/weather', (req,res) =>{
+app.get('/api/cities/title', (req,res) =>{
     let cities = [];
 
     weather_library.forEach(e => {
