@@ -200,7 +200,7 @@ header{
     flex-direction: column;
 }
 
-#particles-js {
+#particles-js{
     position: fixed;
     top: 0;
     left: 0;
@@ -209,3 +209,24 @@ header{
     pointer-events: none;
     z-index: 9999;
 }
+
+
+ #cloud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    pointer-events: none;
+    z-index: 9999;
+ }
+
+ #cloud-cloudy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    pointer-events: none;
+    z-index: 9999;
+ }
