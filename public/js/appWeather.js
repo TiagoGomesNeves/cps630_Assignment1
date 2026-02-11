@@ -63,9 +63,22 @@ function snowyCard(city){
         <img src="images/${city.img}" height="500px">
         </div>
     `;
-}
 
-function sunnyCard(city){
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 200 },
+            color: { value: "#000000" },
+            shape: { type: "circle" },
+            opacity: { value: 0.8 },
+            size: { value: { min: 1, max: 5 } },
+            move: { enable: true, direction: "bottom", speed: 2 }
+        },
+        line_linked: { enable_auto: false },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
+    }
+
+function sunnyCard(city){ 
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
         <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
