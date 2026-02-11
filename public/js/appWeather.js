@@ -141,6 +141,16 @@ function windyCard(city){
         <img src="images/${city.img}" height="500px">
         </div>
     `;
+
+    particlesJS("particles-js", {
+        particles: {
+            number: { value : 30},
+            shape: {type: "image", image: {src: "../images/wind.png", width: 225, height: 225}},
+            move: {enable: true, direction: "right", speed: 30, out_mode: "out" },
+            line_linked: {enable: false}
+        },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
 }
 
 function cloudyCard(city){
