@@ -66,17 +66,17 @@ function snowyCard(city){
 
     particlesJS("particles-js", {
         particles: {
-            number: { value: 200 },
-            color: { value: "#000000" },
+            number: { value: 40 },
+            color: { value: "#d4c4c4" },
             shape: { type: "circle" },
             opacity: { value: 0.8 },
-            size: { value: { min: 1, max: 5 } },
-            move: { enable: true, direction: "bottom", speed: 2 }
+            size: { value: 7 },
+            move: { enable: true, direction: "bottom", speed: 2 },
+            line_linked: { enable: false}
         },
-        line_linked: { enable_auto: false },
         interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
     });
-    }
+}
 
 function sunnyCard(city){ 
     const container = document.querySelector(".weather-card-container");
