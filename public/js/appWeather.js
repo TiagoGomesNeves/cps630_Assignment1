@@ -28,8 +28,31 @@ document.getElementById('selector').addEventListener('change', async (e) =>{
     
     try{
         const response = await fetch(`api/cities/weather/${title}`);
+        const weather = await response.json();
+
+        switch(weather[0].toLowerCase()){
+            case "sunny":
+                sunnyCard(weather);
+                break;
+            case "snowy":
+                snowyCard(weather);
+                break;
+            case "cloudy":
+                cloudyCard(weather);
+                break;
+            case "rainy":
+                rainyCard(weather);
+                break;
+            default:
+                windyCard(weather);
+        }
 
     }catch(error){
         console.error("Error: ", error);
     }
 });
+
+
+function snowyCard(){
+    const container = document.getElementById
+}
