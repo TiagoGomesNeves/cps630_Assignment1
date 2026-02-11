@@ -21,3 +21,9 @@ async function loadContent(){
         console.error("Error: ", error);
     }
 }
+
+
+document.getElementById('selector').addEventListener('change', async (e) =>{
+    const title = e.value;
+    console.log(e.target.value);
+});
