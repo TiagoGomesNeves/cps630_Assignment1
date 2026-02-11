@@ -22,7 +22,7 @@ async function loadContent(){
 
 document.getElementById('selector').addEventListener('change', async (e) =>{
     if (window.pJSDom && window.pJSDom.length > 0) {
-        window.pJSDom[0].pJS.fn.vendors.destroypJS();
+        window.pJSDom.forEach(p => p.pJS.fn.vendors.destroypJS());
         window.pJSDom = [];
     }
     const cloudContainer = document.getElementById("page");

@@ -177,11 +177,15 @@ header{
     bottom: 0;
     width: 70px;
     height: 70px;
-    border-radius: 100%;
+    border-radius: 50%;
     margin-right: 50px;
     margin-bottom: 50px;
-    font-size: 2.5rem;
+    font-size: 50px;
     background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
     
 }
 
@@ -231,4 +235,13 @@ header{
     height: 40vh;
     pointer-events: none;
     z-index: 9999;
+ }
+
+ select{
+    color: black;
+    border: black solid 5px;
+    background-color: #f6f6f6;
+    border-radius: 5%;
+    width: 25%;
+    height: auto;
  }
