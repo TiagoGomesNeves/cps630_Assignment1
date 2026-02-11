@@ -27,7 +27,6 @@ app.get('/charts', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/charts.html'));
 });
 
-
 // API 
 app.get('/api/cities', (req, res) => {
     res.status(200).json(weather_library);
