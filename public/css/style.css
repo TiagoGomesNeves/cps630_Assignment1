@@ -213,7 +213,7 @@ header{
 }
 
 
- #cloud {
+ #cloud, #sun {
     position: fixed;
     top: 0;
     left: 0;

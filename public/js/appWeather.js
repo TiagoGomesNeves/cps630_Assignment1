@@ -99,6 +99,34 @@ function sunnyCard(city){
     `;
 
 
+    particlesJS("sun", {
+        particles: {
+            number: { value : 0.5},
+            shape: {type: "circle"},
+            move: {enable: true, direction: "right", speed: 1.5, out_mode: "bounce" },
+            size: {value: 100},
+            shape: {type: "image", image: {src: "../images/sun.png", width: 100, height: 100}},
+            opacity: {value: 0.8},
+            line_linked: {enable: false}
+        },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
+
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 100 },
+            color: { value: "#bebc2a" },
+            shape: { type: "polygon", polygon: {nb_sides: 4} },
+            opacity: { value: 0.8 },
+            size: { value: 2.5 },
+            move: { enable: true, direction: "down", speed: 20},
+            stroke: {width: 1},
+            line_linked: { enable: false}
+        },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
+
+
 }
 
 function rainyCard(city){
