@@ -21,6 +21,14 @@ async function loadContent(){
 
 
 document.getElementById('selector').addEventListener('change', async (e) =>{
+    if (window.pJSDom && window.pJSDom.length > 0) {
+        window.pJSDom[0].pJS.fn.vendors.destroypJS();
+        window.pJSDom = [];
+    }
+    const cloudContainer = document.getElementById("page");
+    cloudContainer.style.removeProperty("background-color");
+    cloudContainer.style.removeProperty("opacity");
+
     const title = e.target.value;
     
     try{
@@ -66,7 +74,7 @@ function snowyCard(city){
 
     particlesJS("particles-js", {
         particles: {
-            number: { value: 40 },
+            number: { value: 100 },
             color: { value: "#d4c4c4" },
             shape: { type: "circle" },
             opacity: { value: 0.8 },
@@ -86,6 +94,8 @@ function sunnyCard(city){
         <img src="images/${city.img}" height="500px">
         </div>
     `;
+
+
 }
 
 function rainyCard(city){
@@ -96,6 +106,31 @@ function rainyCard(city){
         <img src="images/${city.img}" height="500px">
         </div>
     `;
+
+    particlesJS("cloud", {
+        particles: {
+            number: { value : 250},
+            shape: {type: "image", image: {src: "../images/cloud.png", width: 100, height: 50}},
+            move: {enable: true, direction: "right", speed: 2, out_mode: "bounce" },
+            size: {value: 100},
+            line_linked: {enable: false}
+        },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
+
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 100 },
+            color: { value: "#367087" },
+            shape: { type: "polygon", polygon: {nb_sides: 4} },
+            opacity: { value: 0.8 },
+            size: { value: 2.5 },
+            move: { enable: true, direction: "bottom", speed: 10},
+            stroke: {width: 1},
+            line_linked: { enable: false}
+        },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
 }
 
 function windyCard(city){
@@ -116,5 +151,23 @@ function cloudyCard(city){
         <img src="images/${city.img}" height="500px">
         </div>
     `;
+
+     particlesJS("cloud-cloudy", {
+        particles: {
+            number: { value : 70},
+            shape: {type: "image", image: {src: "../images/cloud.png", width: 100, height: 50}},
+            move: {enable: true, direction: "right", speed: 2, out_mode: "bounce" },
+            size: {value: 100},
+            line_linked: {enable: false}
+        },
+        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
+    });
+
+    const cloudContainer = document.getElementById("page");
+    cloudContainer.style.backgroundColor = "grey";
+    cloudContainer.style.opacity = "0.6";
+
+
+
 }
 
