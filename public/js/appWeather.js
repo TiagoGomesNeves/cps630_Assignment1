@@ -78,7 +78,10 @@ function snowyCard(city){
             color: { value: "#d4c4c4" },
             shape: { type: "circle" },
             opacity: { value: 0.8 },
-            size: { value: 7 },
+            size: {
+                value: 7,      
+                random: true    
+            },
             move: { enable: true, direction: "bottom", speed: 2 },
             line_linked: { enable: false}
         },
