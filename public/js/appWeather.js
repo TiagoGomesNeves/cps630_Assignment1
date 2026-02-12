@@ -66,7 +66,7 @@ document.getElementById('selector').addEventListener('change', async (e) =>{
 function snowyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
-        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <h3>In ${city.title} it is currently ${city.weather} and ${city.temperature}° C.</h3>
         <div>
         <img src="images/${city.img}" height="500px">
         </div>
@@ -92,7 +92,7 @@ function snowyCard(city){
 function sunnyCard(city){ 
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
-        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <h3>In ${city.title} it is currently ${city.weather} and ${city.temperature}° C.</h3>
         <div>
         <img src="images/${city.img}" height="500px">
         </div>
@@ -132,7 +132,7 @@ function sunnyCard(city){
 function rainyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
-        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <h3>In ${city.title} it is currently ${city.weather} and ${city.temperature}° C.</h3>
         <div>
         <img src="images/${city.img}" height="500px">
         </div>
@@ -167,7 +167,7 @@ function rainyCard(city){
 function windyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
-        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <h3>In ${city.title} it is currently ${city.weather} and ${city.temperature}° C.</h3>
         <div>
         <img src="images/${city.img}" height="500px">
         </div>
@@ -187,7 +187,7 @@ function windyCard(city){
 function cloudyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
-        <h2>Current Weather in ${city.title} is ${city.weather} and it is ${city.temperature} degrees out</h2>
+        <h3>In ${city.title} it is currently ${city.weather} and ${city.temperature}° C.</h3>
         <div>
         <img src="images/${city.img}" height="500px">
         </div>
