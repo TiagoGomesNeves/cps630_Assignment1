@@ -1,10 +1,11 @@
 body{
-    background-color: #f6f6f6;
+    background-color: #F4F1E9;
     margin: 0;
     padding: 0;
 }
 
 header{
+    font-family: Verdana, sans-serif;
     text-align: center;
     color: rgb(0, 0, 0);
 }
@@ -12,13 +13,13 @@ header{
 .title{
     font-size: 5rem;
     margin-bottom: 5px;
-   
 }
 
 .card-container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    column-gap: 2rem;
     row-gap: 2rem;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -26,8 +27,11 @@ header{
 
 .card{
     border-radius: 5px;
+    max-width: 450px;
+    min-width: 350px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: white;
+    flex: 0 0 21%;
 }
 
 .card:hover {
@@ -35,23 +39,25 @@ header{
 }
 
 .card h3{
-    text-decoration: underline;
-    margin-left: 10px;
+    font-family: Verdana, sans-serif;
+    margin-left: 20px;
 }
 
 .card p{
-    margin-left: 10px;
+    font-family: Verdana, sans-serif;
+    padding: 0 20px 0 20px;
+    
 }
 
 .card img{
-    height: 200px;
+    height: 250px;
+    width: 100%;
     border-radius: 5px 5px 0 0;
-    margin-bottom: 0px;
 }
 
 .topbar {
     width: 100%;
-    background: #ffffff;
+    background: #154734;
     box-sizing: border-box;
     padding: 14px 24px;
     box-shadow: 0 0 7px rgb(130, 130, 130);
@@ -71,7 +77,7 @@ header{
 }
 
 .tab {
-    color: #282828;
+    color: #ddcba4;
     text-decoration: none;
     font-family: Verdana, sans-serif;
     font-size: 25px;
@@ -80,6 +86,216 @@ header{
 }
 
 .tab:hover {
-    background: #e0e0e0;
+    background: rgb(22, 51, 40);
 }
 
+
+.buttons{
+    display: flex;
+    justify-content: right;
+}
+
+.no-cities{
+    width: 100vh;
+    font-size: 5rem;
+    text-align: center;
+    border: rgb(186, 68, 68) solid 5px;
+
+}
+
+.button-update, .button-delete{
+    background-color: #efeff0;
+    border: #bebebe 1px solid;
+    border-radius: 5px;
+    margin: 15px 5px 5px 5px;
+    width: 35px;
+    height: 35px;
+}
+
+.button-icon{
+    max-width: 33px;
+    max-height: 24px;
+}
+
+.button-delete:hover,.button-update:hover{
+    background-color: #bebebe;
+    cursor: pointer;
+}
+
+
+.form{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form.hidden{
+    display: none;
+}
+
+.update-form-content input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.update-form-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+.update-form-buttons {
+  display: flex;
+  justify-content:center;
+}
+
+.update-form-buttons button{
+  width: 25%;
+}
+
+.add-form-content input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.add-form-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+.add-form-buttons{
+  display: flex;
+  justify-content:center;
+}
+
+.add-form-buttons button{
+  width: 25%;
+}
+
+.button-add{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 70px;
+    height: 70px;
+    color: #ddcba4;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-size: 75px;
+    background-color: #154734;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.button-add:hover{
+    cursor: pointer;
+    background-color: #0b241a;
+}
+
+.selector {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    border: 1px solid #b0b0b0;
+    border-radius: 5px;
+}
+
+.compare-selects{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 8rem 2rem 4rem 2rem;
+}
+
+.select-wrap{
+    position: relative;
+    width: 800px;
+}
+
+.select-label{
+    position: absolute;
+    top: -28px;
+    padding: 0 8px;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+}
+
+.weather-card-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#particles-js{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+
+ #cloud, #sun {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    pointer-events: none;
+    z-index: 9999;
+ }
+
+ #cloud-cloudy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    pointer-events: none;
+    z-index: 9999;
+ }
+
+ select{
+    color: black;
+    border: black solid 5px;
+    background-color: #f6f6f6;
+    border-radius: 5%;
+    width: 25%;
+    height: auto;
+ }
+
+.compare-charts{
+    display: flex;
+    justify-content: center;
+ }
+
+
+.compare-card{
+    border-radius: 5px;
+    text-align: left;
+    padding-left: 20px;
+    margin: 1rem;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+ }
+
+.compare-card canvas {
+  width: 100% !important;
+  height: 250px !important;
+}

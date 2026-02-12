@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>City Mangement Website</title>
+    <meta name="description" content="A website about the mangement of information about cities. Compare, add, remove, update and check the weather for multiple cities">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/app.js"></script>
 </head>
 
 <body>
@@ -34,16 +34,57 @@
             <h1 class="title">City Information Application</h1>
             <p>Contains info about cities</p>
         </header>
-        
-        <button>Add A City</button>
-        <button>Modify a City</button>
-        
         <div class="card-container"></div>
+        <div id="update-form-container" class="form hidden">
+            <div class="update-form-content">
+                <form id="update-form">
+                    <h2>Update City</h2>
+                    <select id="weather" class="selector">
+                        <option value="sunny" selected>Sunny</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="windy">Windy</option>
+                    </select>
+                    <input type="text" id="temp" placeholder="Temperature">
+                    <input type="text" id="pop" placeholder="Population">
+                    <input type="text" id="gdp" placeholder="GDP">
+                    <input type="text" id="desc" placeholder="Description">
+                    <div class="update-form-buttons">
+                        <button type="submit">Save</button>
+                        <button type="button" id="update-form-cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button type="button" class="button-add">&#43;</button>
+        <div id="add-form-container" class="form hidden">
+            <div class="add-form-content">
+                <form id="add-form" enctype="multipart/form-data">
+                    <h2>Add a New City</h2>
+                    <input type="text" id="add-title" placeholder="City Name">
+                    <select id="add-weather" class="selector">
+                        <option value="sunny" selected>Sunny</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="windy">Windy</option>
+                    </select>
+                    <input type="text" id="add-pop" placeholder="Population">
+                    <input type="text" id="add-gdp" placeholder="GDP">
+                    <input type="text" id="add-desc" placeholder="Description">
+                    <input type="text" id="add-temp" placeholder="Temperature">
+                    <input type="file" name='uploaded_file' id="add-img">
 
-        <button>Check the weather</button>
-        <button>Compare The Cities</button>
+                    <div class="add-form-buttons">
+                        <button type="submit">Submit</button>
+                        <button type="button" id="add-form-cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
-
+    <script src="js/app.js"></script>
 </body>
 </html>
