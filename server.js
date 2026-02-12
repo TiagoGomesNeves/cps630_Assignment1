@@ -7,12 +7,12 @@ const app = express();
 const PORT = 8080;
 
 let weather_library =[
-    {title: 'Toronto', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Chicago', weather: 'rainy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Toronto', weather: 'snowy', temperature: 9, population:18234320, gdp: 100000000000, img:'toronto.jpg', description: "Its a city" },
+    {title: 'Chicago', weather: 'rainy', temperature: 9, population:52361903, gdp: 100000000000, img:'toronto.jpg', description: "Its a city" },
     {title: 'Atlanta', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
     {title: 'Brampton', weather: 'cloudy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
     {title: 'Kingston', weather: 'sunny', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
-        
+
 ];
 
 
@@ -30,7 +30,6 @@ app.get('/weather', (req,res) => {
 app.get('/charts', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/charts.html'));
 });
-
 
 // API 
 

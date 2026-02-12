@@ -37,8 +37,12 @@ function display(cities){
             <h3> ${city.title} </h3>
             <p>${city.description}</p>
             <div class="buttons">
-                <button class="button-update">Update</button>
-                <button class="button-delete" value="${city.title}">Delete</button>
+                <button class="button-update">
+                <img class="button-icon" src="/images/edit.png" alt="edit-button" aria-hidden="true">
+                </button>
+                <button class="button-delete" value="${city.title}">
+                <img class="button-icon" src="/images/delete.png" alt="delete-button" aria-hidden="true">
+                </button>
             </div>
         `;
 
