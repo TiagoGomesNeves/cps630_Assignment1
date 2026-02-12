@@ -1,3 +1,6 @@
+let popChart = null;
+let gdpChart = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     loadSelectors();
 });
@@ -46,6 +49,60 @@ function fmtBillions(n) {
     return (num / 1_000_000_000).toFixed(2) + " B";
 }
 
+function toMillions(n) {
+    return Number(n) / 1_000_000;
+}
+
+function toBillions(n) {
+    return Number(n) / 1_000_000_000;
+}
+
+function drawPopChart(labels, data) {
+    const ctx = document.getElementById('popChart').getContext('2d');
+    if (popChart) popChart.destroy();
+
+    popChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Population (Millions)',
+                data,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+
+function drawGdpChart(labels, data) {
+    const ctx = document.getElementById('gdpChart').getContext('2d');
+    if (gdpChart) gdpChart.destroy();
+
+    gdpChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'GDP (Billions)',
+                data,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+}
+
 async function updateCompare() {
     const city1 = document.getElementById('selector').value;
     const city2 = document.getElementById('selector2').value;
@@ -61,4 +118,17 @@ async function updateCompare() {
     document.getElementById('pop2').textContent = fmtMillions(c2.population);
     document.getElementById('gdp1').textContent = fmtBillions(c1.gdp);
     document.getElementById('gdp2').textContent = fmtBillions(c2.gdp);
+
+    //drawing the charts
+    const labels = [c1.title, c2.title];
+
+    drawPopChart(labels, [
+        toMillions(c1.population),
+        toMillions(c2.population)
+    ]);
+
+    drawGdpChart(labels, [
+        toBillions(c1.gdp),
+        toBillions(c2.gdp)
+    ]);
 }
