@@ -119,7 +119,6 @@ async function updateCompare() {
     document.getElementById('gdp1').textContent = fmtBillions(c1.gdp);
     document.getElementById('gdp2').textContent = fmtBillions(c2.gdp);
 
-    //drawing the charts
     const labels = [c1.title, c2.title];
 
     drawPopChart(labels, [

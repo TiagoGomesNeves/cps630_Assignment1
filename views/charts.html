@@ -9,39 +9,44 @@
 </head>
 
 <body>
-  <header class="topbar">
-    <nav class="tabs">
-        <a class="tab" href="/">
-            <img class="tab-icon" src="/images/home.png" alt="" aria-hidden="true" />
-            Home
-        </a>
+    <header class="topbar">
+        <nav class="tabs">
+            <a class="tab" href="/">
+                <img class="tab-icon" src="/images/home.png" alt="" aria-hidden="true" />
+                Home
+            </a>
 
-        <a class="tab" href="/weather">
-            <img class="tab-icon" src="/images/weather.png" alt="" aria-hidden="true" />
-            Weather
-        </a>
+            <a class="tab" href="/weather">
+                <img class="tab-icon" src="/images/weather.png" alt="" aria-hidden="true" />
+                Weather
+            </a>
 
-        <a class="tab" href="/charts">
-            <img class="tab-icon" src="/images/graph.png" alt="" aria-hidden="true" />
-            Compare
-        </a>
-    </nav>
-  </header>
+            <a class="tab" href="/charts">
+                <img class="tab-icon" src="/images/graph.png" alt="" aria-hidden="true" />
+                Compare
+            </a>
+        </nav>
+    </header>
 
     <main>
         <header>
             <h1 class="title">Compare Cities</h1>
-            <p>Compare the population and GDP across different cities</p>
+            <h2 style="margin: 20px;">
+                Select two cities to compare their population and 
+                GDP side by side, shown as bar graphs for a <br> 
+                visual breakdown. Use the dropdowns below to switch 
+                cities and see the charts update.
+            </h2>
 
             <div class="compare-selects">
                 <div class="select-wrap">
-                <span class="select-label">City 1</span>
-                <select class="selector" id="selector"></select>
+                    <span class="select-label">City 1</span>
+                    <select class="selector" id="selector"></select>
                 </div>
 
                 <div class="select-wrap">
-                <span class="select-label">City 2</span>
-                <select class="selector" id="selector2"></select>
+                    <span class="select-label">City 2</span>
+                    <select class="selector" id="selector2"></select>
                 </div>
             </div>
 
@@ -65,7 +70,7 @@
         </header>
     </main>
 
-   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/appCharts.js"></script>
 
 </body>
