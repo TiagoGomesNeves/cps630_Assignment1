@@ -117,7 +117,7 @@ document.querySelector('#update-form').addEventListener('submit', async (e) => {
             loadContent();
         }else{
             const result = await response.json();
-            alert("Error: ", result.error);
+            alert("Error: " + result.error);
         }
 
 
@@ -167,7 +167,7 @@ document.getElementById('add-form').addEventListener('submit', async (e) =>{
             resetHome();
             loadContent();
         }else{
-            alert("Error: ", result.error);
+            alert("Error: " + result.error);
         }
     }catch(error){
         console.error("Error: ", error);
@@ -196,7 +196,7 @@ async function deleteCity(title){
             loadContent();
         }else{
             const result = await response.json();
-            alert("Error: ", result.error);
+            alert("Error: " + result.error);
         }
     }catch (error){
         console.error("Book could not be deleted: ", error);

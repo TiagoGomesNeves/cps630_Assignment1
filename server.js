@@ -70,9 +70,11 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
 app.post('/api/cities', upload.single('img'), (req,res) => {
     const newData = req.body;
     const img = req.file
-    if (!newData.title || !newData.weather || !newData.temperature || !newData.population || !newData.gdp || !newData.description || !img.filename){
-        res.status(400).json({error: "Bad Request Not all fields filled"});
+    if (!newData.title || !newData.weather || !newData.temperature || !newData.population || !newData.gdp || !newData.description || !img){
+        console.log("Here");
+        return res.status(400).json({error: "Bad Request Not all fields filled"});
     }
+    console.log("now here");
     const newCity = {
         title: newData.title,
         weather: newData.weather,
