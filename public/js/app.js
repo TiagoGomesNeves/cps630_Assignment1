@@ -1,9 +1,29 @@
-
-// When page is loaded we load the content 
+// When page is loaded we load the content
 document.addEventListener('DOMContentLoaded', () =>{
     loadContent();
 });
 
+// Hide helpers so we reuse same behaviour everywhere
+function hideUpdateForm(){
+    document.getElementById('update-form-container').classList.add('hidden');
+}
+
+function hideAddForm(){
+    document.getElementById('add-form-container').classList.add('hidden');
+}
+
+// Backdrop click closes modal
+document.getElementById('update-form-container').addEventListener('click', (e) => {
+    if (e.target.id === 'update-form-container'){
+        hideUpdateForm();
+    }
+});
+
+document.getElementById('add-form-container').addEventListener('click', (e) => {
+    if (e.target.id === 'add-form-container'){
+        hideAddForm();
+    }
+});
 
 // Calls API for all the cities
 async function loadContent(){
@@ -16,17 +36,16 @@ async function loadContent(){
     }
 }
 
-
 // Goes through the list of cities and uses that information to build them a card
 function display(cities){
 
     const container = document.querySelector('.card-container');
     if (cities.length == 0){
-         const elem = document.createElement('div');
-         elem.innerHTML = ` 
+        const elem = document.createElement('div');
+        elem.innerHTML = ` 
             <div class="no-cities">No City Data Available</div>
-         `;
-         container.append(elem);
+        `;
+        container.append(elem);
     }
 
     cities.forEach(city => {
@@ -47,7 +66,7 @@ function display(cities){
         `;
 
         elem.querySelector('.button-delete').addEventListener('click', () => {
-            deleteCity(city.title); 
+            deleteCity(city.title);
         });
 
         elem.querySelector('.button-update').addEventListener('click', () =>{
@@ -56,9 +75,7 @@ function display(cities){
 
         container.appendChild(elem);
     });
-
 }
-
 
 function resetHome(){
     const container = document.querySelector('.card-container');
@@ -68,12 +85,10 @@ function resetHome(){
 // This is used in our update form and patch request so we know which instance to update
 let selectedCityTitle = "";
 
-
 function updateCity(city){
     const container = document.getElementById('update-form-container');
     selectedCityTitle = city.title;
 
-   
     document.getElementById('temp').value=city.temperature;
     document.getElementById('pop').value=city.population;
     document.getElementById('gdp').value=city.gdp;
@@ -83,10 +98,8 @@ function updateCity(city){
 }
 
 document.getElementById('update-form-cancel').addEventListener('click', () =>{
-    document.getElementById('update-form-container').classList.add('hidden');
+    hideUpdateForm();
 });
-
-
 
 document.querySelector('#update-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -105,14 +118,17 @@ document.querySelector('#update-form').addEventListener('submit', async (e) => {
     if (description) updateData.description = description;
 
     try{
-        const response = await fetch(`/api/cities/title/${selectedCityTitle}`, {
+        const safeTitle = encodeURIComponent(selectedCityTitle);
+
+        const response = await fetch(`/api/cities/title/${safeTitle}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json'},
             body: JSON.stringify(updateData)
         });
+
         if (response.status === 204){
             alert("City Successfully Updated");
-            document.getElementById('update-form-container').classList.add('hidden');
+            hideUpdateForm();
             resetHome();
             loadContent();
         }else{
@@ -120,9 +136,8 @@ document.querySelector('#update-form').addEventListener('submit', async (e) => {
             alert("Error: " + result.error);
         }
 
-
     }catch(error){
-        console.error("Error: ", error); 
+        console.error("Error: ", error);
     }
 });
 
@@ -131,7 +146,7 @@ document.querySelector('.button-add').addEventListener('click', ()=> {
 });
 
 document.getElementById('add-form-cancel').addEventListener('click', () =>{
-    document.getElementById('add-form-container').classList.add('hidden');
+    hideAddForm();
 });
 
 document.getElementById('add-form').addEventListener('submit', async (e) =>{
@@ -153,16 +168,17 @@ document.getElementById('add-form').addEventListener('submit', async (e) =>{
     if (img) newData.append('img', img);
     if (description) newData.append('description', description);
 
-    console.log(newData);
     try{
         const response = await fetch('/api/cities', {
             method: 'POST',
             body: newData
-        })
+        });
+
         const result = await response.json();
+
         if (response.status == 201){
             alert("New City Added");
-            document.getElementById('add-form-container').classList.add('hidden');
+            hideAddForm();
             document.getElementById('add-form').reset();
             resetHome();
             loadContent();
@@ -172,11 +188,6 @@ document.getElementById('add-form').addEventListener('submit', async (e) =>{
     }catch(error){
         console.error("Error: ", error);
     }
-
-
-
-
-
 });
 
 function addCityForm(){
@@ -184,12 +195,11 @@ function addCityForm(){
     container.classList.remove('hidden');
 }
 
-
-    
 async function deleteCity(title){
-    
     try{
-        const response = await fetch(`/api/cities/title/${title}`, {method: 'DELETE'});
+        const safeTitle = encodeURIComponent(title);
+
+        const response = await fetch(`/api/cities/title/${safeTitle}`, {method: 'DELETE'});
         if (response.status === 204){
             alert("Succesfully Deleted Book");
             resetHome();

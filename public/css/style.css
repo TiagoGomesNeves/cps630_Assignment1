@@ -125,14 +125,20 @@ header{
 
 .form{
     position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: #f6f6f6;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    animation: modalFade 140ms ease-out;
+}
+
+@keyframes modalFade{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
 }
 
 .form.hidden{
@@ -144,12 +150,6 @@ header{
   margin-bottom: 10px;
 }
 
-.update-form-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-}
 .update-form-buttons {
   display: flex;
   justify-content:center;
@@ -164,11 +164,13 @@ header{
   margin-bottom: 10px;
 }
 
-.add-form-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+.update-form-content, .add-form-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    border: 2px solid #154734;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 .add-form-buttons{
   display: flex;
@@ -300,9 +302,9 @@ header{
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: white;
- }
+}
 
 .compare-card canvas {
-  width: 100% !important;
-  height: 250px !important;
+    width: 100% !important;
+    height: 250px !important;
 }

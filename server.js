@@ -8,11 +8,14 @@ const PORT = 8080;
 
 let weather_library =[
     {title: 'Toronto', weather: 'snowy', temperature: 9, population:18234320, gdp: 100000000000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Chicago', weather: 'rainy', temperature: 9, population:52361903, gdp: 100000000000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Atlanta', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Brampton', weather: 'cloudy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Kingston', weather: 'sunny', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
-
+    {title: 'Chicago', weather: 'rainy', temperature: 9, population:52361903, gdp: 100000000000, img:'chicago.jpg', description: "Its a city" },
+    {title: 'Atlanta', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'atlanta.jpg', description: "Its a city" },
+    {title: 'NYC', weather: 'rainy', temperature: 9, population:99999999999, gdp: 100000, img:'nyc.jpg', description: "Its a city" },
+    {title: 'Seattle', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'seattle.jpg', description: "Its a city" },
+    {title: 'Vancouver', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'vancouver.jpg', description: "Its a city" },
+    {title: 'Halifax', weather: 'sunny', temperature: 9, population:99999999999, gdp: 100000, img:'halifax.jpg', description: "Its a city" },
+    {title: 'Winnipeg', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'winnipeg.jpg', description: "Its a city" },
+    {title: 'Montreal', weather: 'snowy', temperature: 9, population:99999999999, gdp: 100000, img:'montreal.jpg', description: "Its a city" }
 ];
 
 
@@ -51,7 +54,7 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
         }
     }
 
-    //Although user does not update title, this prevents wierd bugs where city is deleted before updated
+    // Although user does not update title, this prevents weird bugs where city is deleted before updated
     if ( index == -1){
         res.status(404).json({error: "City " + cityTitle  + " was not Found"});
     }else{
@@ -66,7 +69,7 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
 
 }); 
 
-//Used to add new city data to our city json storage
+// Used to add new city data to our city json storage
 app.post('/api/cities', upload.single('img'), (req,res) => {
     const newData = req.body;
     const img = req.file
