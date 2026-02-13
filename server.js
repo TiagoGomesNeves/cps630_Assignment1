@@ -58,18 +58,24 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
         }
     }
 
-    // Although user does not update title, this prevents weird bugs where city is deleted before updated
-    if ( index == -1){
+        // Although user does not update title, this prevents weird bugs where city is deleted before updated
+    if (index == -1){
         res.status(404).json({error: "City " + cityTitle  + " was not Found"});
     }else{
+        // Validate numeric fields
+        if (isNaN(Number(updatedData.temperature)) ||
+            isNaN(Number(updatedData.population)) ||
+            isNaN(Number(updatedData.gdp))) {
+            return res.status(400).json({ error: "Temperature, population and GDP must be numbers" });
+        }
+
         weather_library[index].weather = updatedData.weather;
-        weather_library[index].population = updatedData.population;
-        weather_library[index].temperature = updatedData.temperature;
-        weather_library[index].gdp = updatedData.gdp;
+        weather_library[index].population = Number(updatedData.population);
+        weather_library[index].temperature = Number(updatedData.temperature);
+        weather_library[index].gdp = Number(updatedData.gdp);
         weather_library[index].description = updatedData.description;
         res.status(204).json(weather_library);
     }
-
 
 }); 
 
