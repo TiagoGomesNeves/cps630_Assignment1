@@ -1,10 +1,13 @@
+// Store chart instances so we can destroy and re-render when selections change
 let popChart = null;
 let gdpChart = null;
 
+// When page loads, populate dropdown selectors
 document.addEventListener('DOMContentLoaded', () => {
     loadSelectors();
 });
 
+// Fetch city titles and load them into both selectors
 async function loadSelectors() {
     try {
         const response = await fetch('/api/cities/title');
@@ -31,24 +34,28 @@ async function loadSelectors() {
     }
 }
 
+// Fetch full city object from API by title
 async function fetchCity(title) {
     const res = await fetch(`/api/cities/title/${encodeURIComponent(title)}`);
     if (!res.ok) throw new Error(`City fetch failed: ${title}`);
     return res.json();
 }
 
+// Format population to millions with 2 decimal places
 function fmtMillions(n) {
     const num = Number(n);
     if (!Number.isFinite(num)) return "—";
     return (num / 1_000_000).toFixed(2) + " M";
 }
 
+// Format GDP to billions with 2 decimal places
 function fmtBillions(n) {
     const num = Number(n);
     if (!Number.isFinite(num)) return "—";
     return (num / 1_000_000_000).toFixed(2) + " B";
 }
 
+// Conversion helpers
 function toMillions(n) {
     return Number(n) / 1_000_000;
 }
@@ -57,8 +64,11 @@ function toBillions(n) {
     return Number(n) / 1_000_000_000;
 }
 
+// Draw population bar chart using Chart.js
 function drawPopChart(labels, data) {
     const ctx = document.getElementById('popChart').getContext('2d');
+
+    // Destroy previous chart before re-rendering
     if (popChart) popChart.destroy();
 
     popChart = new Chart(ctx, {
@@ -80,8 +90,11 @@ function drawPopChart(labels, data) {
     });
 }
 
+// Draw GDP bar chart using Chart.js
 function drawGdpChart(labels, data) {
     const ctx = document.getElementById('gdpChart').getContext('2d');
+
+    // Destroy previous chart before re-rendering
     if (gdpChart) gdpChart.destroy();
 
     gdpChart = new Chart(ctx, {
@@ -103,6 +116,7 @@ function drawGdpChart(labels, data) {
     });
 }
 
+// Fetch selected cities and update UI + charts
 async function updateCompare() {
     const city1 = document.getElementById('selector').value;
     const city2 = document.getElementById('selector2').value;
@@ -121,11 +135,13 @@ async function updateCompare() {
 
     const labels = [c1.title, c2.title];
 
+    // Draw updated population chart
     drawPopChart(labels, [
         toMillions(c1.population),
         toMillions(c2.population)
     ]);
 
+    // Draw updated GDP chart
     drawGdpChart(labels, [
         toBillions(c1.gdp),
         toBillions(c2.gdp)

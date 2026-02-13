@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     loadContent();
 });
 
+// Loads city titles into the weather selector dropdown
 async function loadContent(){
     try{
         const response = await fetch('/api/cities/title');
@@ -18,7 +19,6 @@ async function loadContent(){
         console.error("Error: ", error);
     }
 }
-
 
 document.getElementById('selector').addEventListener('change', async (e) =>{
     if (window.pJSDom && window.pJSDom.length > 0) {
@@ -62,7 +62,7 @@ document.getElementById('selector').addEventListener('change', async (e) =>{
     }
 });
 
-
+// Renders snowy weather card with falling snow particle effect
 function snowyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
@@ -89,6 +89,7 @@ function snowyCard(city){
     });
 }
 
+// Renders sunny weather card with sun and sparkle particle effects
 function sunnyCard(city){ 
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
@@ -97,7 +98,6 @@ function sunnyCard(city){
         <img src="images/${city.img}" height="500px">
         </div>
     `;
-
 
     particlesJS("sun", {
         particles: {
@@ -125,10 +125,9 @@ function sunnyCard(city){
         },
         interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } },
     });
-
-
 }
 
+// Renders rainy weather card with cloud and rain particle effects
 function rainyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
@@ -164,6 +163,7 @@ function rainyCard(city){
     });
 }
 
+// Renders windy weather card with wind animation effect
 function windyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
@@ -184,6 +184,7 @@ function windyCard(city){
     });
 }
 
+// Renders cloudy weather card with moving clouds and grey overlay
 function cloudyCard(city){
     const container = document.querySelector(".weather-card-container");
     container.innerHTML = `
@@ -193,7 +194,7 @@ function cloudyCard(city){
         </div>
     `;
 
-     particlesJS("cloud-cloudy", {
+    particlesJS("cloud-cloudy", {
         particles: {
             number: { value : 70},
             shape: {type: "image", image: {src: "../images/cloud.png", width: 100, height: 50}},
@@ -207,8 +208,4 @@ function cloudyCard(city){
     const cloudContainer = document.getElementById("page");
     cloudContainer.style.backgroundColor = "grey";
     cloudContainer.style.opacity = "0.6";
-
-
-
 }
-

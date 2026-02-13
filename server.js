@@ -7,13 +7,20 @@ const app = express();
 const PORT = 8080;
 
 let weather_library =[
-    {title: 'Toronto', weather: 'snowy', temperature: 9, population:18234320, gdp: 100000000000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Chicago', weather: 'rainy', temperature: 9, population:52361903, gdp: 100000000000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Atlanta', weather: 'windy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Brampton', weather: 'cloudy', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" },
-    {title: 'Kingston', weather: 'sunny', temperature: 9, population:99999999999, gdp: 100000, img:'toronto.jpg', description: "Its a city" }
-
+    {title: 'Toronto', weather: 'cloudy', temperature: -5, population: 7100000, gdp: 332000000000, img:'toronto.jpg', description: "Largest city in Canada and financial hub of Ontario" },
+    {title: 'Chicago', weather: 'sunny', temperature: 1, population: 2720000, gdp: 689000000000, img:'chicago.jpg', description: "Major U.S. city known for its architecture and economy" },
+    {title: 'Atlanta', weather: 'sunny', temperature: 12, population: 530000, gdp: 406000000000, img:'atlanta.jpg', description: "Economic and cultural centre of the southeastern United States" },
+    {title: 'New York City', weather: 'cloudy', temperature: 0, population: 8500000, gdp: 1700000000000, img:'nyc.jpg', description: "Largest city in the United States and global financial capital" },
+    {title: 'Seattle', weather: 'windy', temperature: 10, population: 820000, gdp: 387000000000, img:'seattle.jpg', description: "Pacific Northwest city known for technology and coffee culture" },
+    {title: 'Vancouver', weather: 'rainy', temperature: 8, population: 767000, gdp: 151000000000, img:'vancouver.jpg', description: "Coastal Canadian city known for film, trade, and tourism" },
+    {title: 'Halifax', weather: 'snowy', temperature: -2, population: 512000, gdp: 25000000000, img:'halifax.jpg', description: "Atlantic Canadian port city with growing maritime economy" },
+    {title: 'Winnipeg', weather: 'cloudy', temperature: -2, population: 850000, gdp: 43000000000, img:'winnipeg.jpg', description: "Prairie city in Manitoba known for transportation and manufacturing" },
+    {title: 'Montreal', weather: 'sunny', temperature: -6, population: 4300000, gdp: 230000000000, img:'montreal.jpg', description: "Quebec’s largest city known for culture and aerospace industries" },
+    {title: 'London', weather: 'rainy', temperature: 7, population: 9000000, gdp: 565000000000, img:'london.jpg', description: "Capital of the United Kingdom and global financial centre" },
+    {title: 'Los Angeles', weather: 'sunny', temperature: 16, population: 3900000, gdp: 1040000000000, img:'losangeles.jpg', description: "Major California city known for entertainment and global trade" },
+    {title: 'Mexico City', weather: 'cloudy', temperature: 23, population: 9200000, gdp: 411000000000, img:'mexicocity.jpg', description: "Capital of Mexico and one of the largest cities in North America" }
 ];
+
 
 
 app.use('/', express.static(path.join(__dirname, '/public')));
@@ -51,7 +58,7 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
         }
     }
 
-    //Although user does not update title, this prevents wierd bugs where city is deleted before updated
+    // Although user does not update title, this prevents weird bugs where city is deleted before updated
     if ( index == -1){
         res.status(404).json({error: "City " + cityTitle  + " was not Found"});
     }else{
@@ -66,7 +73,7 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
 
 }); 
 
-//Used to add new city data to our city json storage
+// Used to add new city data to our city json storage
 app.post('/api/cities', upload.single('img'), (req,res) => {
     const newData = req.body;
     const img = req.file
@@ -74,6 +81,23 @@ app.post('/api/cities', upload.single('img'), (req,res) => {
         console.log("Here");
         return res.status(400).json({error: "Bad Request Not all fields filled"});
     }
+    
+    // Ensure city title is unique (case-insensitive)
+    const exists = weather_library.some(city =>
+        city.title.toLowerCase() === newData.title.toLowerCase()
+    );
+
+    if (exists) {
+        return res.status(400).json({ error: "City with this title already exists" });
+    }
+
+    // Validate numeric fields
+    if (isNaN(Number(newData.temperature)) ||
+        isNaN(Number(newData.population)) ||
+        isNaN(Number(newData.gdp))) {
+        return res.status(400).json({ error: "Temperature, population and GDP must be numbers" });
+    }    
+
     console.log("now here");
     const newCity = {
         title: newData.title,
@@ -144,6 +168,9 @@ app.get('/api/cities/title/:title', (req,res)=>{
     }
 });
 
+app.use((req, res) => {
+    res.status(404).type("text").send("404: Page Not Found: Invalid URL");
+});
 
 
 // Starts the server, listens on port 8080

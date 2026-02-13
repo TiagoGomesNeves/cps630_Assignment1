@@ -1,1 +1,7 @@
-node_modules
+node_modules/
+
+# macOS junk
+.DS_Store
+__MACOSX/
+
+npm-debug.log*

@@ -39,11 +39,15 @@
                 two cities side by side.
             </h3>
         </header>
+
         <div class="card-container"></div>
+
         <div id="update-form-container" class="form hidden">
             <div class="update-form-content">
                 <form id="update-form">
                     <h2>Update City</h2>
+
+                    <label for="weather">Weather</label>
                     <select id="weather" class="selector">
                         <option value="sunny" selected>Sunny</option>
                         <option value="snowy">Snowy</option>
@@ -51,10 +55,19 @@
                         <option value="rainy">Rainy</option>
                         <option value="windy">Windy</option>
                     </select>
+                    
+                    <label for="temp">Degrees</label>
                     <input type="text" id="temp" placeholder="Temperature">
+
+                    <label for="pop">Population</label>
                     <input type="text" id="pop" placeholder="Population">
+
+                    <label for="gdp">GDP</label>
                     <input type="text" id="gdp" placeholder="GDP">
+
+                    <label for="desc">Description</label>
                     <input type="text" id="desc" placeholder="Description">
+
                     <div class="update-form-buttons">
                         <button type="submit">Save</button>
                         <button type="button" id="update-form-cancel">Cancel</button>
@@ -62,12 +75,18 @@
                 </form>
             </div>
         </div>
+
         <button type="button" class="button-add">&#43;</button>
+
         <div id="add-form-container" class="form hidden">
             <div class="add-form-content">
                 <form id="add-form" enctype="multipart/form-data">
                     <h2>Add a New City</h2>
+
+                    <label for="add-title">City Name</label>
                     <input type="text" id="add-title" placeholder="City Name">
+
+                    <label for="add-weather">Weather</label>
                     <select id="add-weather" class="selector">
                         <option value="sunny" selected>Sunny</option>
                         <option value="snowy">Snowy</option>
@@ -75,10 +94,16 @@
                         <option value="rainy">Rainy</option>
                         <option value="windy">Windy</option>
                     </select>
-                    <input type="text" id="add-pop" placeholder="Population">
-                    <input type="text" id="add-gdp" placeholder="GDP">
-                    <input type="text" id="add-desc" placeholder="Description">
+                    
+                    <label for="add-temp">Degrees</label>
                     <input type="text" id="add-temp" placeholder="Temperature">
+                    <label for="add-pop">Population</label>
+                    <input type="text" id="add-pop" placeholder="Population">
+                    <label for="add-gdp">GDP</label>
+                    <input type="text" id="add-gdp" placeholder="GDP">
+                    <label for="add-desc">Description</label>
+                    <input type="text" id="add-desc" placeholder="Description">
+                    <label for="add-img">File upload</label>
                     <input type="file" name='uploaded_file' id="add-img">
 
                     <div class="add-form-buttons">

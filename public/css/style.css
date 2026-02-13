@@ -89,7 +89,6 @@ header{
     background: rgb(22, 51, 40);
 }
 
-
 .buttons{
     display: flex;
     justify-content: right;
@@ -122,61 +121,108 @@ header{
     cursor: pointer;
 }
 
-
 .form{
     position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: #f6f6f6;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    animation: modalFade 140ms ease-out;
+}
+
+@keyframes modalFade{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
 }
 
 .form.hidden{
     display: none;
 }
 
-.update-form-content input {
+.update-form-content input,
+.add-form-content input,
+.update-form-content select,
+.add-form-content select{
     width: 100%;
     margin-bottom: 10px;
+    padding: 10px 12px;
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    border: 1px solid #b0b0b0;
+    border-radius: 8px;
+    background: #ffffff;
+    outline: none;
+    box-sizing: border-box;
 }
 
-.update-form-content {
+.update-form-content input:focus,
+.add-form-content input:focus,
+.update-form-content select:focus,
+.add-form-content select:focus{
+    border-color: #154734;
+    box-shadow: 0 0 0 3px rgba(21, 71, 52, 0.18);
+}
+
+
+.update-form-content, .add-form-content {
     background: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 300px;
-}
-.update-form-buttons {
-    display: flex;
-    justify-content:center;
+    border: 2px solid #154734;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.update-form-buttons button{
-    width: 25%;
-}
-
-.add-form-content input {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.add-form-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-}
+.update-form-buttons,
 .add-form-buttons{
     display: flex;
-    justify-content:center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 14px;
 }
 
+.update-form-buttons button,
 .add-form-buttons button{
-    width: 25%;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    border: 1px solid #bebebe;
+    background: #efeff0;
+    cursor: pointer;
+    transition: transform 90ms ease, background-color 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.update-form-buttons button[type="submit"],
+.add-form-buttons button[type="submit"]{
+    background: #154734;
+    color: #DDCBA4;
+    border-color: #154734;
+    box-shadow: 0 8px 18px rgba(21, 71, 52, 0.25);
+}
+
+.update-form-buttons button[type="submit"]:hover,
+.add-form-buttons button[type="submit"]:hover{
+    background: #0b241a;
+    transform: translateY(-1px);
+}
+
+.update-form-buttons button[type="button"],
+.add-form-buttons button[type="button"]{
+    background: transparent;
+    border-color: #154734;
+    color: #154734;
+}
+
+.update-form-buttons button[type="button"]:hover,
+.add-form-buttons button[type="button"]:hover{
+    background: rgba(21, 71, 52, 0.08);
+    transform: translateY(-1px);
 }
 
 .button-add{
@@ -259,8 +305,7 @@ header{
     z-index: 9999;
 }
 
-
- #cloud, #sun {
+#cloud, #sun {
     position: fixed;
     top: 0;
     left: 0;
@@ -268,9 +313,9 @@ header{
     height: 30vh;
     pointer-events: none;
     z-index: 9999;
- }
+}
 
- #cloud-cloudy {
+#cloud-cloudy {
     position: fixed;
     top: 0;
     left: 0;
@@ -278,16 +323,7 @@ header{
     height: 40vh;
     pointer-events: none;
     z-index: 9999;
- }
-
- select{
-    color: black;
-    border: black solid 5px;
-    background-color: #f6f6f6;
-    border-radius: 5%;
-    width: 25%;
-    height: auto;
- }
+}
 
 #weather, #add-weather{
     height: auto;
@@ -299,8 +335,7 @@ header{
 .compare-charts{
     display: flex;
     justify-content: center;
- }
-
+}
 
 .compare-card{
     border-radius: 5px;
@@ -310,7 +345,7 @@ header{
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: white;
- }
+}
 
 .compare-card canvas {
     width: 100% !important;
