@@ -133,8 +133,8 @@ document.querySelector('#update-form').addEventListener('submit', async (e) => {
             body: JSON.stringify(updateData)
         });
 
-        // 204 means update succeeded in this implementation
-        if (response.status === 204){
+        // 200 means update succeeded in this implementation
+        if (response.status === 200){
             alert("City Successfully Updated");
             hideUpdateForm();
             resetHome();
@@ -217,7 +217,7 @@ async function deleteCity(title){
         const safeTitle = encodeURIComponent(title);
 
         const response = await fetch(`/api/cities/title/${safeTitle}`, {method: 'DELETE'});
-        if (response.status === 204){
+        if (response.status === 200){
             alert("Succesfully Deleted Book");
             resetHome();
             loadContent();

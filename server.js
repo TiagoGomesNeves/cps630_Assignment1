@@ -74,7 +74,7 @@ app.patch('/api/cities/title/:title', express.json(),  (req,res) => {
         weather_library[index].temperature = Number(updatedData.temperature);
         weather_library[index].gdp = Number(updatedData.gdp);
         weather_library[index].description = updatedData.description;
-        res.status(204).json(weather_library);
+        res.status(200).json(weather_library);
     }
 
 }); 
@@ -138,11 +138,12 @@ app.delete('/api/cities/title/:title', (req,res) =>{
         weather_library.splice(index, 1);
         console.log("index: ", index);
         console.log(weather_library);
-        res.status(204).json(city);
+        res.status(200).json(city);
     }
 
 });
 
+// Returns a list of city titles
 app.get('/api/cities/title', (req,res) =>{
     let cities = [];
 

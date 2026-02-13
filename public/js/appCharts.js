@@ -13,22 +13,26 @@ async function loadSelectors() {
         const response = await fetch('/api/cities/title');
         const cities = await response.json();
 
-        const sel1 = document.getElementById('selector');
-        const sel2 = document.getElementById('selector2');
+        if(response.status == 200){
+            const sel1 = document.getElementById('selector');
+            const sel2 = document.getElementById('selector2');
 
-        cities.forEach(name => {
-        sel1.append(new Option(name, name));
-        sel2.append(new Option(name, name));
-        });
+            cities.forEach(name => {
+            sel1.append(new Option(name, name));
+            sel2.append(new Option(name, name));
+            });
 
-        if (cities.length > 0) sel1.value = cities[0];
-        if (cities.length > 1) sel2.value = cities[1];
-        else if (cities.length > 0) sel2.value = cities[0];
+            if (cities.length > 0) sel1.value = cities[0];
+            if (cities.length > 1) sel2.value = cities[1];
+            else if (cities.length > 0) sel2.value = cities[0];
 
-        sel1.addEventListener('change', updateCompare);
-        sel2.addEventListener('change', updateCompare);
+            sel1.addEventListener('change', updateCompare);
+            sel2.addEventListener('change', updateCompare);
 
-        updateCompare();
+            updateCompare();
+        }else{
+            console.log("Error: " + cities.error());
+        }
     } catch (error) {
         console.error("Error loading selectors:", error);
     }
@@ -36,9 +40,19 @@ async function loadSelectors() {
 
 // Fetch full city object from API by title
 async function fetchCity(title) {
-    const res = await fetch(`/api/cities/title/${encodeURIComponent(title)}`);
-    if (!res.ok) throw new Error(`City fetch failed: ${title}`);
-    return res.json();
+    try{
+         const res = await fetch(`/api/cities/title/${encodeURIComponent(title)}`);
+
+        if (res.status == 200){
+            return res.json();
+        }else{
+            console.log("Error");
+        }
+
+    }catch (error){
+        console.error("Error: " + error);
+    }
+    
 }
 
 // Format population to millions with 2 decimal places
