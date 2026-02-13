@@ -63,8 +63,8 @@ aaaaaaa
 * `GET /api/cities/title` → Returns a list of city titles (JSON)
 * `GET /api/cities/title/:title` → Returns a single city by title (JSON), or `404` if not found
 * `POST /api/cities` → Adds a new city (multipart form with `img` upload), returns `201` on success or `400` on validation errors
-* `PATCH /api/cities/title/:title` → Updates an existing city by title, returns success code or `404` if not found
-* `DELETE /api/cities/title/:title` → Deletes an existing city by title, returns success code or `404` if not found
+* `PATCH /api/cities/title/:title` → Updates an existing city by title, returns success code `200` or `404` if not found
+* `DELETE /api/cities/title/:title` → Deletes an existing city by title, returns success code `200` or `404` if not found
 
 ## Reflection
 
