@@ -119,9 +119,9 @@ document.querySelector('#update-form').addEventListener('submit', async (e) => {
 
     // Only include fields that were provided
     if (weather) updateData.weather = weather;
-    if (temperature) updateData.temperature = Number(temperature);
-    if (population) updateData.population = Number(population);
-    if (gdp) updateData.gdp = Number(gdp);
+    if (temperature) updateData.temperature = temperature;
+    if (population) updateData.population = population;
+    if (gdp) updateData.gdp = gdp;
     if (description) updateData.description = description;
 
     try{
