@@ -81,6 +81,23 @@ app.post('/api/cities', upload.single('img'), (req,res) => {
         console.log("Here");
         return res.status(400).json({error: "Bad Request Not all fields filled"});
     }
+    
+    // Ensure city title is unique (case-insensitive)
+    const exists = weather_library.some(city =>
+        city.title.toLowerCase() === newData.title.toLowerCase()
+    );
+
+    if (exists) {
+        return res.status(400).json({ error: "City with this title already exists" });
+    }
+
+    // Validate numeric fields
+    if (isNaN(Number(newData.temperature)) ||
+        isNaN(Number(newData.population)) ||
+        isNaN(Number(newData.gdp))) {
+        return res.status(400).json({ error: "Temperature, population and GDP must be numbers" });
+    }    
+
     console.log("now here");
     const newCity = {
         title: newData.title,
