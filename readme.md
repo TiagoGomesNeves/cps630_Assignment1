@@ -26,7 +26,7 @@ In the future, the web app could be extended by connecting it to a database inst
    Or using nodemon (if available):
 
    ```bash
-   npm run dev
+   nodemon server.js
    ```
 3. Open the app in a browser:
 
